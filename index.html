@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GN46JLLP0X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GN46JLLP0X');
+</script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Email Campaign</title>
+  <style>
+    :root{
+      --bg0:#07131c; --bg1:#071a26; --bg2:#061018;
+      --card0:#0e2533; --card1:#0b1f2c;
+      --border:rgba(255,255,255,.10);
+      --text:#e8f2ff;
+      --muted:rgba(232,242,255,.75);
+
+      --accent:#c9a96b;
+
+      --warn0: rgba(255,193,7,.10);
+      --warn1: rgba(255,193,7,.28);
+    }
+
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      max-width:980px;
+      margin:34px auto;
+      padding:0 16px;
+      line-height:1.6;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(47,192,214,.10), transparent 55%),
+        radial-gradient(900px 600px at 80% 0%, rgba(60,120,255,.10), transparent 50%),
+        linear-gradient(180deg, var(--bg1), var(--bg0) 55%, var(--bg2));
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom:14px
+    }
+
+    .titleRow{
+      display:flex;
+      align-items:center;
+      gap:12px
+    }
+
+    .badgeIcon{
+      width:55px;
+      height:55px;
+      font-size:35px;
+      border-radius:12px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      box-shadow:0 10px 24px rgba(0,0,0,.35);
+    }
+
+    h1{margin:0;font-size:32px;letter-spacing:.2px}
+    .subtitle{margin:4px 0 0;color:var(--muted);white-space:pre-line}
+
+    button, a.btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      color:#fff;
+      font-weight:800;
+      cursor:pointer;
+      text-decoration:none;
+      transition:transform .05s ease, background .2s ease;
+      user-select:none;
+    }
+
+    button:active{transform:translateY(1px)}
+    button:disabled{opacity:.5;cursor:not-allowed}
+
+    .langBtn{
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(255,255,255,.04);
+    }
+
+    .card{
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)),
+        linear-gradient(180deg, var(--card0), var(--card1));
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:16px;
+      margin:14px 0;
+      box-shadow:
+        0 22px 60px rgba(0,0,0,.55),
+        0 1px 0 rgba(255,255,255,.05) inset;
+    }
+
+    .warn{
+      background:var(--warn0);
+      border:1px solid var(--warn1);
+    }
+
+    .panel{
+      border-radius:22px;
+      padding:16px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 18px 44px rgba(0,0,0,.42);
+      margin-top:14px;
+    }
+
+    .panel::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      opacity:.22;
+      background: radial-gradient(900px 320px at 0% 0%, var(--accent), transparent 55%);
+      pointer-events:none;
+    }
+
+    .panelHeader{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+      position:relative;
+    }
+
+    .panelTitle{margin:0;font-size:22px;line-height:1.25}
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(0,0,0,.15);
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background:var(--accent);
+      box-shadow:0 0 0 3px rgba(255,255,255,.06)
+    }
+
+    .meta{margin:10px 0 12px;color:var(--muted);position:relative}
+
+    .sendBox{
+      position:relative;
+      border-radius:18px;
+      padding:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.16);
+    }
+
+    .sendBtn{
+      width:100%;
+      padding:14px 14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.16);
+      font-size:16px;
+    }
+
+    .statusLine{margin-top:10px;color:var(--muted)}
+    .bullets{margin:10px 0 0 18px;color:var(--muted)}
+    .bullets li{margin:6px 0}
+
+    details{margin-top:10px}
+    details summary{cursor:pointer;font-weight:900}
+
+    .mono{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+      unicode-bidi:plaintext;
+      word-break:break-word;
+    }
+
+    pre.mono{
+      white-space:pre-wrap;
+      background:rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      padding:12px;
+      margin:10px 0 0;
+      color:rgba(232,242,255,.92);
+    }
+
+    .files{margin-top:10px;color:var(--muted);font-size:.95rem}
+    .error{color:#ffb4b4}
+
+    .hint{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="titleRow">
+      <div class="badgeIcon">🕊️</div>
+      <div>
+        <h1 id="pageTitle"></h1>
+        <div class="subtitle" id="pageSubtitle"></div>
+      </div>
+    </div>
+    <button id="langBtn" class="langBtn" type="button"></button>
+  </div>
+
+  <div class="card">
+    <h2 id="aboutTitle"></h2>
+    <p id="aboutText"></p>
+  </div>
+
+  <div class="card warn">
+    <b id="warnTitle"></b>
+    <span id="warnText" style="color:var(--muted)"></span>
+    <div class="hint" id="hostingHint"></div>
+  </div>
+
+  <section class="panel">
+    <div class="panelHeader">
+      <div>
+        <h2 class="panelTitle" id="panelTitle"></h2>
+        <div class="meta" id="panelMeta"></div>
+      </div>
+      <div class="pill"><span class="dot"></span><span id="pillLabel"></span></div>
+    </div>
+
+    <div class="sendBox">
+      <button class="sendBtn" id="sendBtn" disabled></button>
+
+      <div class="statusLine">
+        <span id="statusLabel"></span>
+        <span id="status">—</span>
+        <span id="error" class="error"></span>
+      </div>
+
+      <ul class="bullets" id="bullets"></ul>
+
+      <details>
+        <summary id="previewSummary"></summary>
+        <div class="statusLine"><b id="previewSubjectLabel"></b> <span class="mono" id="previewSubject"></span></div>
+        <pre class="mono" id="previewBody"></pre>
+      </details>
+
+      <div class="files" id="files"></div>
+    </div>
+  </section>
+
+<script>
+  let LANG = "fa";
+
+  const UI = {
+    fa: {
+      dir:"rtl",
+      title:"کمپین ایمیل",
+      subtitle:"این صفحه فقط ۱ بخش دارد.\nبا یک کلیک، پیش‌نویس آماده در برنامه ایمیل شما باز می‌شود.\nنیازی نیست قسمت «To» را پر کنید؛ همه گیرندگان در BCC هستند و لطفاً در پایان ایمیل نام خود را امضا کنید.",
+      warnTitle:"نکته مهم:",
+      aboutTitle:"درباره این پروژه",
+      aboutText:`این صفحه بخشی از یک ابتکار مدنی است که به شهروندان کمک می‌کند تا به‌سادگی با اعضای پارلمان اتریش تماس بگیرند و توجه سیاسی بیشتری را به وضعیت ایران جلب کنند.
+
+هدف این اقدام اعلام حمایت از مبارزه مردم ایران برای آزادی، دموکراسی، حقوق بشر و حاکمیت قانون است.
+
+بسیاری از ایرانیان در داخل و خارج از کشور از شاهزاده رضا پهلوی به عنوان یکی از چهره‌های اصلی حامی گذار دموکراتیک و مسالمت‌آمیز در ایران حمایت می‌کنند.
+
+با ارسال این ایمیل، شهروندان می‌توانند دولت‌های دموکراتیک را تشویق کنند تا صدای مردم ایران را بشنوند و از خواسته‌های آنان برای آینده‌ای آزاد و دموکراتیک حمایت کنند.
+
+این ابزار تنها یک پیش‌نویس ایمیل آماده می‌کند و تصمیم نهایی برای ارسال آن کاملاً بر عهده کاربر است.`,
+      warnText:"مرورگرهای داخل اپ‌ها (Instagram/X/Telegram) اغلب mailto: را بلاک می‌کنند. اگر کار نکرد: لینک را در مرورگر اصلی (Safari/Chrome) باز کنید یا گزینه «Open in browser» را بزنید.",
+      hostingHint:"⚠️ این صفحه باید از GitHub Pages باز شود؛ وگرنه دکمه‌ها و فایل‌خوانی ممکن است کار نکند.",
+      toggle:"🌐 EN",
+
+      panelTitle:"ارسال ایمیل به اعضای پارلمان اتریش",
+      panelGroup:"پارلمان اتریش",
+      panelMeta:"گیرندگان: لیست ایمیل ۱ • متن: پیام ۱",
+      sendBtn:"✅ ارسال ایمیل (باز کردن پیش‌نویس)",
+      statusLabel:"وضعیت: ",
+      loaded:(n)=>`بارگذاری شد: ${n} ایمیل`,
+      bullets:[
+        "پیش‌نویس ایمیل با گیرندگان آماده می‌شود.",
+        "ارسال نهایی با خود شماست (در اپ ایمیل).",
+        "به‌صورت پیش‌فرض از BCC استفاده می‌شود."
+      ],
+      previewSummary:"نمایش موضوع و متن ایمیل",
+      subjectLabel:"موضوع:",
+      files:"فایل‌ها: mail1.txt + message1.txt",
+      dash:"—",
+      errorPrefix:"خطا: "
+    },
+
+    en: {
+      dir:"ltr",
+      title:"Email Campaign",
+      subtitle:"This page has only 1 section. One click opens a ready draft in your email app. You do not need to fill in the “To” field because all recipients are already included in the BCC field. Please do not forget to sign the end of the email with your name before sending it.",
+      warnTitle:"Note (important):",
+      aboutTitle:"About this project",
+      aboutText:`This page is part of a civic initiative that allows citizens to easily contact members of the Austrian Parliament and encourage political attention to the situation in Iran.
+
+The goal is to express support for the Iranian people's struggle for freedom, democracy, human rights, and the rule of law.
+
+Many Iranians inside and outside the country support Crown Prince Reza Pahlavi as a prominent advocate for a democratic and peaceful transition in Iran.
+
+By sending this email, citizens can encourage democratic governments to listen to the Iranian people and support their aspirations for a free and democratic future.
+
+This tool only prepares an email draft — the final decision to send the email remains entirely with the user.`,
+      warnText:"In-app browsers (Instagram/X/Telegram) often block mailto:. If it doesn’t work: open the link in Safari/Chrome or choose “Open in browser”.",
+      hostingHint:"⚠️ Open this page via GitHub Pages, otherwise the buttons / file loading may not work.",
+      toggle:"🌐 DE",
+
+      panelTitle:"Send email to members of the Austrian Parliament",
+      panelGroup:"Austrian Parliament",
+      panelMeta:"Recipients: email list 1 • Text: message 1",
+      sendBtn:"✅ Send email (open draft)",
+      statusLabel:"Status: ",
+      loaded:(n)=>`Loaded: ${n} emails`,
+      bullets:[
+        "A draft email with recipients is prepared.",
+        "Final sending is up to you (in your email app).",
+        "By default, BCC is used."
+      ],
+      previewSummary:"Show subject & body",
+      subjectLabel:"Subject:",
+      files:"Files: mail1.txt + message1.txt",
+      dash:"—",
+      errorPrefix:"Error: "
+    },
+
+    de: {
+      dir:"ltr",
+      title:"E-Mail-Aktion",
+      subtitle:"Diese Seite hat nur 1 Bereich. Mit einem Klick öffnet sich ein fertiger Entwurf in Ihrer E-Mail-App. Sie müssen das „To“-Feld nicht ausfüllen, da alle Empfänger bereits im BCC-Feld eingetragen sind. Bitte unterschreiben Sie die E-Mail am Ende mit Ihrem Namen.",
+      warnTitle:"Hinweis (wichtig):",
+      aboutTitle:"Über dieses Projekt",
+      aboutText:`Diese Seite ist Teil einer zivilgesellschaftlichen Initiative, die es Bürgerinnen und Bürgern ermöglicht, Mitglieder des österreichischen Parlaments einfach zu kontaktieren und politische Aufmerksamkeit für die Situation im Iran zu fördern.
+
+Ziel ist es, Unterstützung für den Kampf des iranischen Volkes für Freiheit, Demokratie, Menschenrechte und Rechtsstaatlichkeit auszudrücken.
+
+Viele Iranerinnen und Iraner im In- und Ausland unterstützen Kronprinz Reza Pahlavi als eine wichtige Stimme für einen demokratischen und friedlichen Übergang im Iran.
+
+Durch das Versenden dieser E-Mail können Bürgerinnen und Bürger demokratische Regierungen dazu ermutigen, die Stimmen der iranischen Bevölkerung zu hören und ihre Bestrebungen nach einer freien und demokratischen Zukunft zu unterstützen.
+
+Dieses Werkzeug erstellt lediglich einen E-Mail-Entwurf — die endgültige Entscheidung zum Versenden liegt vollständig beim Nutzer.`,
+      warnText:"In-App-Browser (Instagram/X/Telegram) blockieren oft mailto:. Wenn es nicht klappt: Link im normalen Browser öffnen (Safari/Chrome) oder „In Browser öffnen“ wählen.",
+      hostingHint:"⚠️ Diese Seite muss über GitHub Pages geöffnet werden, sonst funktionieren Buttons/Dateien evtl. nicht.",
+      toggle:"🌐 FA",
+
+      panelTitle:"E-Mail an Mitglieder des österreichischen Parlaments senden",
+      panelGroup:"Österreichisches Parlament",
+      panelMeta:"Empfänger: E-Mail-Liste 1 • Text: Nachricht 1",
+      sendBtn:"✅ E-Mail senden (Entwurf öffnen)",
+      statusLabel:"Status: ",
+      loaded:(n)=>`Geladen: ${n} E-Mails`,
+      bullets:[
+        "Ein Entwurf mit Empfängern wird vorbereitet.",
+        "Das endgültige Senden machst du in deiner Mail-App.",
+        "Standardmäßig wird BCC verwendet."
+      ],
+      previewSummary:"Betreff & Text anzeigen",
+      subjectLabel:"Betreff:",
+      files:"Dateien: mail1.txt + message1.txt",
+      dash:"—",
+      errorPrefix:"Fehler: "
+    }
+  };
+
+  const PANEL = {
+    mailFile:"mail1.txt",
+    msgFile:"message1.txt",
+    emails:[],
+    subject:"",
+    body:"",
+    loaded:false,
+    error:""
+  };
+
+  function setLang(lang){
+    LANG = lang;
+    const t = UI[LANG];
+
+    document.documentElement.lang = LANG;
+    document.documentElement.dir = t.dir;
+    document.title = t.title;
+
+    document.getElementById("pageTitle").textContent = t.title;
+    document.getElementById("pageSubtitle").textContent = t.subtitle;
+    document.getElementById("warnTitle").textContent = t.warnTitle + " ";
+    document.getElementById("warnText").textContent = t.warnText;
+    document.getElementById("hostingHint").textContent = t.hostingHint;
+    document.getElementById("langBtn").textContent = t.toggle;
+    document.getElementById("aboutTitle").textContent = t.aboutTitle;
+    document.getElementById("aboutText").textContent = t.aboutText;
+
+    document.getElementById("panelTitle").textContent = t.panelTitle;
+    document.getElementById("pillLabel").textContent = t.panelGroup;
+    document.getElementById("panelMeta").textContent = t.panelMeta;
+    document.getElementById("sendBtn").textContent = t.sendBtn;
+    document.getElementById("statusLabel").textContent = t.statusLabel;
+    document.getElementById("previewSummary").textContent = t.previewSummary;
+    document.getElementById("previewSubjectLabel").textContent = t.subjectLabel;
+    document.getElementById("files").textContent = t.files;
+
+    renderPanel();
+  }
+
+  document.getElementById("langBtn").addEventListener("click", () => {
+    const next = (LANG === "fa") ? "en" : (LANG === "en") ? "de" : "fa";
+    setLang(next);
+  });
+
+  function normalizeEmails(text){
+    return text
+      .split(/\r?\n/)
+      .map(l => l.trim())
+      .filter(Boolean)
+      .filter(l => !l.startsWith("#"));
+  }
+
+  function parseMessage(text){
+    const subjectLine = text.match(/^SUBJECT:\s*(.*)$/m);
+    const bodySplit = text.split(/^\s*BODY:\s*$/m);
+
+    const subject = subjectLine ? subjectLine[1].trim() : "";
+    const body = (bodySplit.length > 1) ? bodySplit.slice(1).join("\n").trim() : "";
+    return { subject, body };
+  }
+
+  function buildMailto(emails, subject, body){
+    const bcc = encodeURIComponent(emails.join(","));
+    const s = encodeURIComponent(subject || "");
+    const b = encodeURIComponent(body || "");
+    return `mailto:?bcc=${bcc}&subject=${s}&body=${b}`;
+  }
+
+  function setPanelError(msg){
+    PANEL.error = msg;
+    const errEl = document.getElementById("error");
+    errEl.textContent = msg ? (" — " + msg) : "";
+  }
+
+  function renderPanel(){
+    const t = UI[LANG];
+
+    document.getElementById("status").textContent = PANEL.loaded ? t.loaded(PANEL.emails.length || 0) : t.loaded(0);
+
+    const ul = document.getElementById("bullets");
+    ul.innerHTML = "";
+    for(const line of t.bullets){
+      const li = document.createElement("li");
+      li.textContent = line;
+      ul.appendChild(li);
+    }
+
+    document.getElementById("previewSubject").textContent = PANEL.subject || t.dash;
+    document.getElementById("previewBody").textContent = PANEL.body || t.dash;
+
+    const ready = PANEL.loaded && PANEL.emails.length > 0 && (PANEL.subject.length > 0 || PANEL.body.length > 0) && !PANEL.error;
+    document.getElementById("sendBtn").disabled = !ready;
+  }
+
+  async function loadPanel(){
+    setPanelError("");
+
+    try{
+      const [mailRes, msgRes] = await Promise.all([
+        fetch(PANEL.mailFile, { cache:"no-store" }),
+        fetch(PANEL.msgFile, { cache:"no-store" })
+      ]);
+
+      if(!mailRes.ok) throw new Error(`${PANEL.mailFile} not found`);
+      if(!msgRes.ok) throw new Error(`${PANEL.msgFile} not found`);
+
+      const [mailTxt, msgTxt] = await Promise.all([mailRes.text(), msgRes.text()]);
+
+      PANEL.emails = normalizeEmails(mailTxt);
+      const parsed = parseMessage(msgTxt);
+      PANEL.subject = parsed.subject;
+      PANEL.body = parsed.body;
+      PANEL.loaded = true;
+
+      renderPanel();
+    }catch(e){
+      PANEL.loaded = false;
+      PANEL.emails = [];
+      PANEL.subject = "";
+      PANEL.body = "";
+      setPanelError(UI[LANG].errorPrefix + e.message);
+      renderPanel();
+    }
+  }
+
+  document.getElementById("sendBtn").addEventListener("click", () => {
+    if(!PANEL.loaded || !PANEL.emails.length) return;
+    window.location.href = buildMailto(PANEL.emails, PANEL.subject, PANEL.body);
+  });
+
+  (async function init(){
+    setLang("fa");
+    await loadPanel();
+    renderPanel();
+  })();
+</script>
+
+</body>
+</html>
